@@ -11,10 +11,12 @@
   var initialState = { val: 0 }
   var reducer = (state = initialState, action) => {
     if (action.type == 'INCREMENT') {
+      // return { val: state.val + (action.by || 1) } // not best practice, recommend: incAction
       return { val: state.val + action.by }
     }
     return state
   }
+  var incAction = (by = 1) => ({ type: 'INCREMENT', by }) // action creator
   var store = Redux.createStore(reducer)
 
   function render() {
@@ -23,7 +25,8 @@
   render()
 
   store.subscribe(render)
-  store.dispatch({ type: 'INCREMENT', by: 2 }) // type as an action
+  store.dispatch(incAction(2)) // type as an action
+  store.dispatch(incAction()) // type as an action
 </script>
 
 </html>
