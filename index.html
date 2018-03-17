@@ -8,11 +8,14 @@
   <div id="output"></div>
 </body>
 <script>
-  var store = Redux.createStore(state => 1)
+  var store = Redux.createStore((state = 0) => state + 1)
   function render() {
     document.getElementById("output").innerHTML = "" + store.getState()
   }
   render()
+
+  store.subscribe(render)
+  store.dispatch({ type: 'X' })
 </script>
 
 </html>
