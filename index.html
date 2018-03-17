@@ -8,14 +8,21 @@
   <div id="output"></div>
 </body>
 <script>
-  var store = Redux.createStore((state = 0) => state + 1)
+  var reducer = (state = 0, action) => {
+    if (action.type == 'INCREMENT') {
+      return state + 1
+    }
+    return state
+  }
+  var store = Redux.createStore(reducer)
+
   function render() {
     document.getElementById("output").innerHTML = "" + store.getState()
   }
   render()
 
   store.subscribe(render)
-  store.dispatch({ type: 'X' })
+  store.dispatch({ type: 'INCREMENT' }) // type as an action
 </script>
 
 </html>
