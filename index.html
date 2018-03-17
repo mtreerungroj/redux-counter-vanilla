@@ -11,7 +11,7 @@
   var initialState = { val: 0 }
   var reducer = (state = initialState, action) => {
     if (action.type == 'INCREMENT') {
-      return { val: state.val + 1 }
+      return { val: state.val + action.by }
     }
     return state
   }
@@ -23,7 +23,7 @@
   render()
 
   store.subscribe(render)
-  setInterval(() => store.dispatch({ type: 'INCREMENT' }), 1000) // type as an action
+  store.dispatch({ type: 'INCREMENT', by: 2 }) // type as an action
 </script>
 
 </html>
