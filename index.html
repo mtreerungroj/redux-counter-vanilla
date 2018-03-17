@@ -8,8 +8,9 @@
   <div id="output"></div>
 </body>
 <script>
+  var store = Redux.createStore(state => 1)
   function render() {
-    document.getElementById("output").innerHTML = "0"
+    document.getElementById("output").innerHTML = "" + store.getState()
   }
   render()
 </script>
