@@ -8,16 +8,17 @@
   <div id="output"></div>
 </body>
 <script>
-  var reducer = (state = 0, action) => {
+  var initialState = { val: 0 }
+  var reducer = (state = initialState, action) => {
     if (action.type == 'INCREMENT') {
-      return state + 1
+      return { val: state.val + 1 }
     }
     return state
   }
   var store = Redux.createStore(reducer)
 
   function render() {
-    document.getElementById("output").innerHTML = "" + store.getState()
+    document.getElementById("output").innerHTML = "" + store.getState().val
   }
   render()
 
