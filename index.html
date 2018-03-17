@@ -22,7 +22,7 @@
   render()
 
   store.subscribe(render)
-  store.dispatch({ type: 'INCREMENT' }) // type as an action
+  setInterval(() => store.dispatch({ type: 'INCREMENT' }), 1000) // type as an action
 </script>
 
 </html>
